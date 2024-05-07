@@ -42,8 +42,6 @@ export class SocketGateway implements OnGatewayConnection, OnGatewayDisconnect {
     client: Socket,
     data: { token: string; loggedInUserId: string },
   ) {
-    console.log(`viewMessages from client ${client.id}: ${data.token}`);
-
     const payload = await this.authService.verifyAccessToken(data.token);
 
     await this.userService.updateProfile({
@@ -67,8 +65,6 @@ export class SocketGateway implements OnGatewayConnection, OnGatewayDisconnect {
     client: Socket,
     data: { receiverId: string; token: string },
   ) {
-    console.log(`viewDetailsMessage from client ${client.id}: ${data.token}`);
-
     const payload = await this.authService.verifyAccessToken(data.token);
     const dataQuery = {
       senderId: payload._id,
