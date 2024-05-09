@@ -16,5 +16,8 @@ COPY . .
 # Expose the port that your NestJS application will run on
 EXPOSE 3000
 
+# Command to build the NestJS application
+RUN npm run build
+
 # Command to run your NestJS application
 CMD [ "npm", "run", "start:prod" ]
